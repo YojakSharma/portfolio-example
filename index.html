@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rishabh Joshi | Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: white;
+    }
+
+    body {
+      display: flex;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 260px;
+      background-color: #111;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-img img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 4px solid #444;
+      object-fit: cover;
+    }
+
+    .sidebar h1 {
+      margin-top: 20px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .nav-links {
+      margin-top: 30px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-links button {
+      background: none;
+      border: none;
+      color: #fff;
+      padding: 12px;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .nav-links button:hover {
+      background-color: #222;
+    }
+
+    .main-content {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .content-section {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      padding: 40px;
+      background-color: #000;
+      transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      z-index: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .content-section.active {
+      left: 0;
+      opacity: 1;
+      z-index: 1;
+      pointer-events: auto;
+    }
+
+    .content-section::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    .content-section::-webkit-scrollbar-thumb {
+      background-color: grey;
+      border-radius: 10px;
+    }
+
+    .content-section::-webkit-scrollbar-track {
+      background-color: #222;
+    }
+
+	.stock-item {
+  padding: 10px;
+  margin: 8px 0;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease, background 0.3s;
+  background: #000000;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.stock-item:hover {
+  transform: scale(1.03);
+  background-color: #939597;
+}
+
+
+    /* Contact Form Styling */
+    #contact-form {
+      background-color: #eee;
+      padding: 20px;
+      border-radius: 16px;
+      max-width: 500px;
+      margin-top: 20px;
+    }
+
+    #contact-form input,
+    #contact-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 20px;
+      background-color: #f5f5f5;
+      color: #000;
+      font-size: 16px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    #contact-form input::placeholder,
+    #contact-form textarea::placeholder {
+      color: #666;
+    }
+
+    #contact-form textarea {
+      resize: vertical;
+    }
+
+    #contact-form button {
+      background-color: #fff;
+      color: #000;
+      padding: 12px 20px;
+      border: 2px solid #ccc;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    #contact-form button:hover {
+      background-color: #ddd;
+      border-color: #aaa;
+    }
+
+    #form-status {
+      margin-top: 10px;
+      color: lime;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="profile-img">
+      <img src="assets/img/rishi.jpeg" alt="Rishabh Joshi">
+    </div>
+    <h1>Rishabh Joshi</h1>
+    <nav class="nav-links">
+      <button data-section="home">Home</button>
+      <button data-section="about">About</button>
+      <button data-section="resume">Resume</button>
+      <button data-section="portfolio">Portfolio</button>
+      <button data-section="services">Services</button>
+      <button data-section="stocks">Stocks</button>
+      <button data-section="contact">Contact</button>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <section id="home" class="content-section active">
+      <h2>Home</h2>
+      <p>Welcome to my digital space! I'm Rishabh, a freelancer, ASM at AngelOne.</p>
+    </section>
+
+    <section id="about" class="content-section">
+      <h2>About Me</h2>
+      <p>I’m a self-taught developer born in 2006, passionate about coding and digital design.</p>
+      <p>Skills: HTML, CSS, JavaScript, React, Node.js, Figma</p>
+    </section>
+
+    <section id="resume" class="content-section">
+      <h2>Resume</h2>
+      <ul>
+        <li>Freelancer – 2022 to Present – 30+ Projects</li>
+        <li>Intern – WebFlow Studio – 2023</li>
+        <li>High School Computer Science – 2021–2023</li>
+      </ul>
+    </section>
+
+    <section id="portfolio" class="content-section">
+      <h2>Portfolio</h2>
+      <p>Recent projects I’ve worked on:</p>
+      <ul>
+        <li>Modern Agency Landing Page</li>
+        <li>E-commerce Website with React</li>
+        <li>Portfolio built in Vue</li>
+      </ul>
+    </section>
+
+    <section id="services" class="content-section">
+      <h2>Services</h2>
+      <ul>
+        <li>🔧 Web Development – Clean, fast, and SEO-ready</li>
+        <li>🎨 UI/UX Design – Intuitive and beautiful interfaces</li>
+        <li>🚀 SEO Optimization – Rank better, load faster</li>
+        <li>📢 Branding – Logo + Social Media Kit</li>
+        <li>🛠️ Maintenance – Monthly updates & support</li>
+      </ul>
+    </section>
+
+    <section id="stocks" class="content-section">
+      <h2>Live Stock Prices</h2>
+      <ul id="stock-list">
+        <li>Loading...</li>
+      </ul>
+      <canvas id="stockChart" width="800" height="400"></canvas>
+    </section>
+
+    <section id="contact" class="content-section">
+      <h2>Contact</h2>
+      <p>Let's work together! Fill out the form below:</p>
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <div id="form-status"></div>
+    </section>
+  </div>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Slide Navigation with Fade
+  const buttons = document.querySelectorAll('.nav-links button');
+  const sections = document.querySelectorAll('.content-section');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-section');
+      btn.style.transform = 'scale(0.95)';
+      setTimeout(() => btn.style.transform = '', 150);
+
+      const activeSection = document.querySelector('.content-section.active');
+      if (activeSection) {
+        activeSection.style.transition = 'opacity 0.4s ease';
+        activeSection.style.opacity = '0';
+
+        setTimeout(() => {
+          activeSection.classList.remove('active');
+          activeSection.style.opacity = '';
+          activeSection.style.transition = '';
+
+          const targetSection = document.getElementById(target);
+          if (targetSection) {
+            targetSection.classList.add('active');
+            targetSection.style.opacity = '0';
+            targetSection.style.transition = 'opacity 0.4s ease';
+            requestAnimationFrame(() => {
+              targetSection.style.opacity = '1';
+            });
+
+            targetSection.addEventListener('transitionend', () => {
+              targetSection.style.opacity = '';
+              targetSection.style.transition = '';
+            }, { once: true });
+          }
+        }, 400);
+      }
+    });
+  });
+
+  // Contact Form Submission with Fade Message
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+
+  if (form && status) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      status.style.transition = 'opacity 0.3s ease';
+      status.style.opacity = '0';
+
+      setTimeout(() => {
+        fetch('contact.php', {
+          method: 'POST',
+          body: data
+        })
+        .then(resp => resp.json())
+        .then(json => {
+          status.innerText = json.message || 'Message sent!';
+          if (json.success) form.reset();
+
+          status.style.opacity = '1';
+          status.addEventListener('transitionend', () => {
+            status.style.transition = '';
+            status.style.opacity = '';
+          }, { once: true });
+        })
+        .catch(() => {
+          status.innerText = 'Error sending message.';
+          status.style.opacity = '1';
+        });
+      }, 300);
+    });
+  }
+
+  // Stock Chart with Chart.js + Angel One WebSocket
+  const API_KEY = "YOUR_API_KEY";
+  const CLIENT_CODE = "YOUR_CLIENT_CODE";
+  const AUTH_TOKEN = "YOUR_AUTH_TOKEN";
+  const FEED_TOKEN = "YOUR_FEED_TOKEN";
+  const SYMBOL_TOKEN = "3045"; // RELIANCE
+
+  const canvas = document.getElementById('stockChart');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+
+    const stockChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'RELIANCE Price',
+          data: [],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 2,
+          fill: false,
+          tension: 0.1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Time'
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Price (₹)'
+            }
+          }
+        }
+      }
+    });
+
+    const ws = new WebSocket("wss://ws.smartapi.angelbroking.com/ws");
+
+    ws.onopen = () => {
+      const subscribeMsg = {
+        action: "subscribe",
+        params: {
+          exchange: "NSE",
+          symboltoken: [SYMBOL_TOKEN],
+          authorization: AUTH_TOKEN,
+          "x-api-key": API_KEY,
+          "x-client-code": CLIENT_CODE,
+          "x-feed-token": FEED_TOKEN,
+          correlation_id: "RELIANCE"
+        }
+      };
+      ws.send(JSON.stringify(subscribeMsg));
+    };
+
+    ws.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        if (data.data && data.data.lp) {
+          const time = new Date().toLocaleTimeString();
+          const price = data.data.lp;
+
+          const labels = stockChart.data.labels;
+          const datapoints = stockChart.data.datasets[0].data;
+
+          if (labels.length > 30) {
+            labels.shift();
+            datapoints.shift();
+          }
+
+          labels.push(time);
+          datapoints.push(price);
+          stockChart.update();
+        }
+      } catch (error) {
+        console.error('WebSocket parse error:', error);
+      }
+    };
+
+    ws.onerror = err => console.error('WebSocket error:', err);
+    ws.onclose = () => console.warn('WebSocket closed');
+  }
+});
+
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
